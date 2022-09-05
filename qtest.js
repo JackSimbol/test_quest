@@ -104,6 +104,17 @@ function keep_value(tid, maxval){ //控制滑动条不超过最大值
     }
 }
 
+/*
+新项目
+*/
+function keep_value_weight(tid, maxval){ //控制填空不超过最大值 
+    if(document.getElementById(tid).value > maxval){
+        document.getElementById(tid).value = maxval;
+        var sid = document.getElementById(tid).getAttribute("sid");
+        document.getElementById(sid).value = maxval;
+    }
+}
+
 function auto_selected(oid){ //剩余一项未填时，自动获取该项值
     var cnt_zero = 0;
     var zero_id;
@@ -155,6 +166,11 @@ function process_slider(idlist, tid){
     var oid = get_id(idlist);
     keep_value(tid, set_max(oid, tid));
     auto_selected(oid);
+}
+
+function process_weight(idlist, tid){
+    var oid = get_id(idlist);
+    keep_value_weight(tid, set_max(oid, tid));
 }
 
 function reset(tid){ //重设问题值
@@ -257,7 +273,17 @@ document.getElementById("slider_1_c_slider").onchange = function(){
     process_slider(idlist,"slider_1_c_slider");
 }
 
+document.getElementById("slider_1_a_weight").onchange = function(){
+    process_weight(idlist,"slider_1_a_weight");
+}
 
+document.getElementById("slider_1_b_weight").onchange = function(){
+    process_weight(idlist,"slider_1_b_weight");
+}
+
+document.getElementById("slider_1_c_weight").onchange = function(){
+    process_weight(idlist,"slider_1_c_weight");
+}
 
 document.getElementById("check").onclick = function(){
     check("slider_1");
