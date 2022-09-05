@@ -193,15 +193,15 @@ function unparse(subid){
         var qbody = "body=" + "[" + document.getElementById(id).innerHTML + "]";
         var qtype = "type=" + document.getElementById(id).getAttribute("qtype");
         switch(qtype){
-            case "radio":{
+            case "type=radio":{
                 qdetail = unparse_radio(id);
                 break;
             }
-            case "checkbox":{
+            case "type=checkbox":{
                 qdetail = unparse_checkbox(id);
                 break;
             }
-            case "slider":{
+            case "type=slider":{
                 if(!check(id)){
                     qdetail = null;
                     console.error("Sum of sliders must be 100. Please check your answer.");
@@ -210,7 +210,7 @@ function unparse(subid){
                     qdetail = unparse_slider(id);
                 break;
             }
-            case "text":{
+            case "type=text":{
                 qdetail = unparse_text(id);
                 break;
             }
