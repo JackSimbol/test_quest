@@ -57,10 +57,10 @@ function addListener(sid, wid){
     var sliderEl = document.querySelector("#"+sid);
     var selectedEl = document.querySelector("#"+wid);
     
-    sliderEl.addEventListener("change", () => { //根据滑块值修改填写值
+    sliderEl.addEventListener("input", () => { //根据滑块值修改填写值
         selectedEl.value = sliderEl.value;
     });
-    selectedEl.addEventListener("change", () =>{ //根据输入修改滑块值
+    selectedEl.addEventListener("input", () =>{ //根据输入修改滑块值
         sliderEl.value = selectedEl.value;  
     })
 }
@@ -273,15 +273,15 @@ document.getElementById("slider_1_c_slider").onchange = function(){
     process_slider(idlist,"slider_1_c_slider");
 }
 
-document.getElementById("slider_1_a_weight").onchange = function(){
+document.getElementById("slider_1_a_weight").oninput = function(){
     process_weight(idlist,"slider_1_a_weight");
 }
 
-document.getElementById("slider_1_b_weight").onchange = function(){
+document.getElementById("slider_1_b_weight").oninput = function(){
     process_weight(idlist,"slider_1_b_weight");
 }
 
-document.getElementById("slider_1_c_weight").onchange = function(){
+document.getElementById("slider_1_c_weight").oninput = function(){
     process_weight(idlist,"slider_1_c_weight");
 }
 
