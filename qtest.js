@@ -218,7 +218,7 @@ function unparse(subid){ //总unparse函数
                 qdetail = "default";
             }
         } // "###"标识着一个问题的开始
-        quest += "###" + qbody + "," + qtype + "," + qdetail;
+        quest += "###" + qbody + "," + qtype + "," + qdetail + "\n";
     }
     return quest;
 }
