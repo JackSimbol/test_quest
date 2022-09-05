@@ -159,12 +159,14 @@ function process_slider(idlist, tid){
 
 function reset(tid){ //重设问题值
     var oid = get_id(idlist);
+    var log_id = document.getElementById(tid).getAttribute("logid");
     for(var id of oid){
         id = document.getElementById(id).getAttribute("sid");
         document.getElementById(id).value = 0;
         var wid = document.getElementById(id).getAttribute("wid");
         document.getElementById(wid).value = 0;
     }
+    document.getElementById(log_id).innerHTML = "";
 }
 
 function unparse_slider(tid){
