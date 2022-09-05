@@ -245,15 +245,15 @@ addListener("slider_1_c_slider", "slider_1_c_weight");
 
 var idlist = document.getElementById("slider_1").getAttribute("idlist");
 
-document.getElementById("slider_1_a_slider").oninput = function(){
+document.getElementById("slider_1_a_slider").onchange = function(){
     process_slider(idlist,"slider_1_a_slider");
 }
 
-document.getElementById("slider_1_b_slider").oninput = function(){
+document.getElementById("slider_1_b_slider").onchange = function(){
     process_slider(idlist,"slider_1_b_slider");
 }
 
-document.getElementById("slider_1_c_slider").oninput = function(){
+document.getElementById("slider_1_c_slider").onchange = function(){
     process_slider(idlist,"slider_1_c_slider");
 }
 
