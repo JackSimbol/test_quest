@@ -193,7 +193,7 @@ function unparse(subid){
         var qbody = "body=" + "[" + document.getElementById(id).innerHTML + "]";
         var qtype = "type=" + document.getElementById(id).getAttribute("qtype");
         switch(qtype){
-            case "type=radio":{
+            case "type=radio":{ //对应get不同题型
                 qdetail = unparse_radio(id);
                 break;
             }
