@@ -170,7 +170,8 @@ function process_slider(idlist, tid){
 
 function process_weight(idlist, tid){
     var oid = get_id(idlist);
-    keep_value_weight(tid, set_max(oid, tid));
+    var sid = document.getElementById(tid).getAttribute("sid");
+    keep_value_weight(tid, set_max(oid, sid));
 }
 
 function reset(tid){ //重设问题值
