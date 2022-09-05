@@ -181,7 +181,7 @@ function unparse_slider(tid){
 }
 
 function unparse_text(tid){
-    var sid = document.getElementById(tid).getAttribute(text_id);
+    var sid = document.getElementById(tid).getAttribute("text_id");
     var text = "["+document.getElementById(sid).innerHTML+"]";
     return "text="+text;
 }
