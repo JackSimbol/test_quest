@@ -182,7 +182,7 @@ function unparse_slider(tid){
 
 function unparse_text(tid){
     var sid = document.getElementById(tid).getAttribute("text_id");
-    var text = "["+document.getElementById(sid).innerHTML+"]";
+    var text = "["+document.getElementById(sid).value+"]";
     return "text="+text;
 }
 
