@@ -1,4 +1,4 @@
-function get_id(idlist){ //由idlist转到slider-id构成的数组
+function get_id(idlist){ 
     return idlist.split(',');
 }
 
