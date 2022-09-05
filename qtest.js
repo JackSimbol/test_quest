@@ -186,7 +186,7 @@ function unparse_text(tid){
     return "text="+text;
 }
 
-function unparse(subid){
+function unparse(subid){ //总unparse函数
     var listid = get_id(document.getElementById(subid).getAttribute("idlist"));
     var quest = "";
     for(var id of listid){
