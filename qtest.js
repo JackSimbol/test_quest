@@ -187,7 +187,7 @@ function unparse_text(tid){
 }
 
 function unparse(subid){
-    var listid = document.getElementById(subid).getAttribute("idlist");
+    var listid = get_id(document.getElementById(subid).getAttribute("idlist"));
     var quest = "";
     for(var id of listid){
         var qbody = "body=" + "[" + document.getElementById(id).innerHTML + "]";
