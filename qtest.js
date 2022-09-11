@@ -253,6 +253,7 @@ function unparse(subid){ //总unparse函数
     for(var id of listid){
         if(!check_nec(id, document.getElementById(id).getAttribute("qtype")), document.getElementById(id).getAttribute("nec")){
             console.error("Please complete the form before you submit it.");
+            return "###Unfinished";
         }
         var qbody = "body=" + "[" + document.getElementById(id).innerHTML + "]";
         var qtype = "type=" + document.getElementById(id).getAttribute("qtype"); 
