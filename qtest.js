@@ -35,7 +35,10 @@ function unparse_radio(tid){ //将单选题结果处理成文本
 }
 
 function check_checkbox(sid){
-    document.getElementById(sid).checked = true;
+    if(document.getElementById(sid).checked == true)
+        document.getElementById(sid).checked = false;
+    else
+        document.getElementById(sid).checked = true;
 }
 
 function unparse_checkbox(tid){
