@@ -57,10 +57,10 @@ function addListener(sid, wid){
     var sliderEl = document.querySelector("#"+sid);
     var selectedEl = document.querySelector("#"+wid);
     
-    sliderEl.addEventListener("input", () => { //根据滑块值修改填写值
+    sliderEl.addEventListener("change", () => { //根据滑块值修改填写值
         selectedEl.value = sliderEl.value;
     });
-    selectedEl.addEventListener("input", () =>{ //根据输入修改滑块值
+    selectedEl.addEventListener("change", () =>{ //根据输入修改滑块值
         sliderEl.value = selectedEl.value;  
     })
 }
@@ -170,8 +170,7 @@ function process_slider(idlist, tid){
 
 function process_weight(idlist, tid){
     var oid = get_id(idlist);
-    var sid = document.getElementById(tid).getAttribute("sid");
-    keep_value_weight(tid, set_max(oid, sid));
+    keep_value_weight(tid, set_max(oid, tid));
 }
 
 function reset(tid){ //重设问题值
@@ -205,12 +204,58 @@ function unparse_text(tid){
     return "text="+text;
 }
 
+/* 检查必填题 */
+function check_nec(id, type, nec){
+    if(nec == "false"){
+        return true;
+    }
+    switch(type){
+        case "radio": {
+            let cnt = 0;
+            oid = get_id(document.getElementById(id).getAttribute("idlist"));
+            for(var sid of oid){
+                if(document.getElementById(document.getElementById(sid).getAttribute("in_id")).checked == true){
+                    cnt += 1;
+                }
+            }
+            if(cnt == 1) return true;
+            return false;
+        }
+        case "slider": {
+            return true;
+        }
+        case "checkbox": {
+            let cnt = 0;
+            oid = get_id(document.getElementById(id).getAttribute("idlist"));
+            for(var sid of oid){
+                if(document.getElementById(document.getElementById(sid).getAttribute("in_id")).checked == true){
+                    cnt += 1;
+                }
+            }
+            if(cnt > 0) return true;
+            return false;
+        }
+        case "text": {
+            var sid = document.getElementById(tid).getAttribute("text_id");
+            if(document.getElementById(sid).value == "")
+                return false;
+            return true;
+        }
+        default: {
+            return true;
+        }
+    }
+}
+
 function unparse(subid){ //总unparse函数
     var listid = get_id(document.getElementById(subid).getAttribute("idlist"));
     var quest = "";
     for(var id of listid){
+        if(!check_nec(id, document.getElementById(id).getAttribute("qtype")), document.getElementById(id).getAttribute("nec")){
+            console.error("Please complete the form before you submit it.");
+        }
         var qbody = "body=" + "[" + document.getElementById(id).innerHTML + "]";
-        var qtype = "type=" + document.getElementById(id).getAttribute("qtype");
+        var qtype = "type=" + document.getElementById(id).getAttribute("qtype"); 
         switch(qtype){
             case "type=radio":{ //对应get不同题型
                 qdetail = unparse_radio(id);
@@ -223,7 +268,8 @@ function unparse(subid){ //总unparse函数
             case "type=slider":{
                 if(!check(id)){
                     qdetail = null;
-                    console.error("Sum of sliders must be 100. Please check your answer.");
+                    if(document.getElementById(id).getAttribute("nec") == "true")
+                        console.error("Sum of sliders must be 100. Please check your answer.");
                 }
                 else
                     qdetail = unparse_slider(id);
@@ -274,15 +320,15 @@ document.getElementById("slider_1_c_slider").onchange = function(){
     process_slider(idlist,"slider_1_c_slider");
 }
 
-document.getElementById("slider_1_a_weight").oninput = function(){
+document.getElementById("slider_1_a_weight").onchange = function(){
     process_weight(idlist,"slider_1_a_weight");
 }
 
-document.getElementById("slider_1_b_weight").oninput = function(){
+document.getElementById("slider_1_b_weight").onchange = function(){
     process_weight(idlist,"slider_1_b_weight");
 }
 
-document.getElementById("slider_1_c_weight").oninput = function(){
+document.getElementById("slider_1_c_weight").onchange = function(){
     process_weight(idlist,"slider_1_c_weight");
 }
 
