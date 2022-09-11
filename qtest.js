@@ -34,13 +34,6 @@ function unparse_radio(tid){ //将单选题结果处理成文本
     return opt_body+","+checked;
 }
 
-function check_checkbox(sid){
-    if(document.getElementById(sid).checked == true)
-        document.getElementById(sid).checked = false;
-    else
-        document.getElementById(sid).checked = true;
-}
-
 function unparse_checkbox(tid){
     var oid = get_id(document.getElementById(tid).getAttribute("idlist"));
     var checked = "checked=";
@@ -342,18 +335,6 @@ document.getElementById("check").onclick = function(){
 
 document.getElementById("reset").onclick = function(){
     reset("slider_1");
-}
-
-document.getElementById("checkbox_1_a_in").onclick = function(){
-    check_checkbox("checkbox_1_a_in");
-}
-
-document.getElementById("checkbox_1_b_in").onclick = function(){
-    check_checkbox("checkbox_1_b_in");
-}
-
-document.getElementById("checkbox_1_c_in").onclick = function(){
-    check_checkbox("checkbox_1_c_in");
 }
 
 document.getElementById("submit").onclick = function(){
