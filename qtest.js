@@ -236,7 +236,7 @@ function check_nec(id, type, nec){
             return false;
         }
         case "text": {
-            var sid = document.getElementById(tid).getAttribute("text_id");
+            var sid = document.getElementById(id).getAttribute("text_id");
             if(document.getElementById(sid).value == "")
                 return false;
             return true;
